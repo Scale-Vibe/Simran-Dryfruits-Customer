@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Simran Dryfruits">
-<link rel="apple-touch-icon" href="https://imgh.in/host/tzyar2">
-<link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Simran%20Dryfruits%20%26%20Daily%20Needs%22,%22short_name%22:%22Simran%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23FBF8F2%22,%22theme_color%22:%22%235A2D16%22,%22description%22:%22Premium%20dry%20fruits%20%26%20daily%20needs%20-%20Takeaway%20from%20our%20shop%22,%22icons%22:[{%22src%22:%22https://imgh.in/host/tzyar2%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22},{%22src%22:%22https://imgh.in/host/tzyar2%22,%22sizes%22:%22512x512%22,%22type%22:%22image/png%22}]}">
+<link rel="apple-touch-icon" href="./simran.png">
+<link rel="manifest" href="./manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <title>SIMRAN DRYFRUITS &amp; Daily Needs</title>
 <style>
@@ -1176,18 +1176,15 @@ $('#overlay').addEventListener('click', e => {if(e.target.id==='overlay')closeSh
 /* ---------- PWA + SERVICE WORKER ---------- */
 function initPWA(){
   // Register service worker (works on HTTPS / localhost)
-  if('serviceWorker' in navigator){
-    const swCode=`
-const CACHE='simran-v1';
-const ASSETS=[self.location.href.replace(/\\/[^/]*$/,'/')];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>clients.claim())));
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)))});
-`;
-    const blob=new Blob([swCode],{type:'text/javascript'});
-    const url=URL.createObjectURL(blob);
-    navigator.serviceWorker.register(url).catch(()=>{});
-  }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js', {
+    scope: './'
+  }).then(reg => {
+    console.log('SIMRAN Customer PWA registered', reg);
+  }).catch(err => {
+    console.error('PWA registration failed:', err);
+  });
+}
 
   // Install prompt
   let deferredPrompt=null;
