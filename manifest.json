@@ -3,6 +3,7 @@
   "short_name": "Simran",
   "description": "Premium dry fruits & daily needs – Order online, pickup from our shop",
   "start_url": "./customer-portal.html",
+  "scope": "./customer-portal.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#FBF8F2",
