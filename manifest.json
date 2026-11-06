@@ -1,0 +1,41 @@
+{
+  "name": "Simran Dryfruits & Daily Needs",
+  "short_name": "Simran Dryfruits",
+  "description": "Order fresh dry fruits, seeds & daily needs from Simran Dryfruits.",
+  "start_url": "/Simran-Dryfruits-Customer/customer-portal.html",
+  "scope": "/Simran-Dryfruits-Customer/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF8F2",
+  "theme_color": "#5A2D16",
+  "lang": "en",
+  "categories": ["food", "shopping"],
+  "icons": [
+    {
+      "src": "simran.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "simran.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "simran.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "simran.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
